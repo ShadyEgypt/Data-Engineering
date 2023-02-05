@@ -4,7 +4,7 @@ import time
 
 
 timestr = time.strftime(f'%Y%m%d-%H%M%S')
-D_DIR = r'/home/shady/Shady/Week2/Challenge/jsonFiles'
+D_DIR = r'/home/shady/Data-Engineering/Week2/Challenge/jsonFiles'
 
 def csv_to_json(df, filename):
     new_filename = f"{filename}_{timestr}.json"

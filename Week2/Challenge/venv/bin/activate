@@ -38,7 +38,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/home/shady/Shady/Week2/Challenge/venv"
+VIRTUAL_ENV="/home/shady/Data-Engineering/Week2/Challenge/venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
