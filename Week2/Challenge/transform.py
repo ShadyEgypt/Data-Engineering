@@ -2,7 +2,6 @@ import pandas as pd
 import os
 from sklearn import preprocessing
 
-D_DIR = r'/home/shady/Data-Engineering/Week2/Challenge/transformedFiles'
 
 
 def transform(df, name):
@@ -25,9 +24,12 @@ def transform(df, name):
     # #save file
     originalName = os.path.splitext(name)[0]
     newName = f'{originalName}_transformed.csv'
-    path = os.path.join(D_DIR,newName)
-    df.to_csv(path)
-    return df
+    i = 0
+    while((os.path.exists(newName))):
+        i+=1
+        newName = f"{originalName}_transformed{i}.json"
+    df.to_json(newName,indent = 1, orient= 'records')
+    return newName
 
 
 
