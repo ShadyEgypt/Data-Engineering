@@ -1,7 +1,7 @@
 from fastapi import FastAPI, UploadFile, File
 from fastapi.exceptions import HTTPException 
 from fastapi.responses import FileResponse
-import uvicorn
+
 import pandas as pd
 from convert import csv_to_json
 from transform import transform
