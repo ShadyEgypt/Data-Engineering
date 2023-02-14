@@ -1,0 +1,3 @@
+Error in extract_batch_files function
+dataframe is 
+ cannot concatenate object of type '<class 'str'>'; only Series and DataFrame objs are valid

@@ -1,0 +1,18 @@
+version: '3.5'
+
+services:
+  postgres:
+    container_name: postgres_container
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      PGDATA: ./data/postgres
+    volumes:
+      - ./create_postgres_seed_data.sql:/docker-entrypoint-initdb.d/create_tables.sql
+      # This is the volume mounting part. It maintains the db after configs when building up
+      # the cluster another time after taking it down
+      # - ./postgres:/data/postgres
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
