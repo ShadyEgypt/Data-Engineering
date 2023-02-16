@@ -25,29 +25,27 @@ def extract_from_json(file_to_process):
 # function for the xml
 def extract_from_xml(file_to_process):
     try:
-        dataframe = pd.DataFrame(columns=["car_model", "year_of_manufacture", "price", "fuel"])
+        dataframe = pd.DataFrame(columns=['car_model', 'year_of_manufacture', 'price', 'fuel'])
         tree = ET.parse(file_to_process)
         root = tree.getroot()
-
         for child in root:
-            car_model = child.find("car_model").text
-            year_of_manufacture = int(child.find("year_of_manufacture").text)
-            price = float(child.find("price").text)
-            fuel = child.find("fuel").text
+            car_model = child.find('car_model').text
+            year_of_manufacture = int(child.find('year_of_manufacture').text)
+            price = float(child.find('price').text)
+            fuel = child.find('fuel').text
             dataframe = dataframe.append(
                 {
-                    "car_model": car_model,
-                    "year_of_manufacture": year_of_manufacture,
-                    "price": price,
-                    "fuel": fuel
+                'car_model':car_model,
+                'year_of_manufacture': year_of_manufacture,
+                'price': price, 
+                'fuel': fuel
                 },
                 ignore_index = True
             )
-
         return dataframe
-
     except Exception as exp:
-        return("Error in xml reading")
+        return('Error reading the xml file\n', exp)
+    
 
 
 # main function

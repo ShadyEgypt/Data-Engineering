@@ -1,6 +1,0 @@
-That's the error I face after I run the 'src/extract/extract_files.py'
-The test.py file is the instructor's file , I compared and I couldn't know what's wrong
-
-Error in extract_batch_files function
-dataframe is 
- cannot concatenate object of type '<class 'str'>'; only Series and DataFrame objs are valid
