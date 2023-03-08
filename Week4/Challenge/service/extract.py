@@ -81,7 +81,7 @@ def extract_from_songs(songs, album_name):
     list_items = songs.get('items')
     list_songs = []
     for i in list_items:
-        list_songs.append({'Album Name': album_name,'Song Name': i.get('name'), 'Track Number': i.get('track_number'), \
+        list_songs.append({'album': album_name,'song': i.get('name'), 'Track Number': i.get('track_number'), \
                             'Duration': i.get('duration_ms'), 'ID': i.get('id')})
     df = pd.DataFrame.from_records(list_songs)
     return df
@@ -122,7 +122,7 @@ def get_songs_albums_of_artist(token, artist_name):
         for i in dict_df:
             list.append(i)
     dataframe = pd.DataFrame(list)
-    required_df = dataframe[['Album Name','Song Name']]
+    required_df = dataframe[['album','song']]
     print('Extract done successfully!')
     return required_df
 
@@ -132,8 +132,8 @@ if __name__ == "__main__":
     # album_id = '6XFBQAGNOez6octj9v4MUo'
     # album_name = 'Shoft El Ayam'
     # songs = get_songs_by_albums(token, album_id)
-    # cols = albums.get('items')[0].keys()
-    # print(cols)
+    # # cols = albums.get('items')[0].keys()
+    # # print(cols)
     # df = extract_from_songs(songs, album_name)
     # print(df)
 
@@ -142,6 +142,11 @@ if __name__ == "__main__":
     # print(cols)
     # df = extract_from_top_tracks(top_songs)
     # print(df)
-
-    df = get_songs_albums_of_artist(token, 'Amr Diab')
+    token = get_token()
+    artist = search_for_artist(token, 'Amr Diab')
+    artist_id = artist.get('id')
+    albums_json = get_albums_by_artist(token, artist_id)
+    df = extract_from_albums(albums_json)
     print(df)
+    # df = get_songs_albums_of_artist(token, 'Amr Diab')
+    # print(df)
